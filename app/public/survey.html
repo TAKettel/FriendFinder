@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Friend Finder - Find a Friend!</title>
+
+  <!-- Latest compiled and minified CSS & JS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+  <script src="https://code.jquery.com/jquery.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+</head>
+
+<!-- 1. Your survey should have 10 questions of your choosing. Each answer should be on a scale of 1 to 5 based on how much the user agrees or disagrees with a question. -->
+<body>
+    <div class="container">
+      <div class="jumbotron">
+        <h1 class="text-center"><span class="fas fa-clipboard-list"></span> Tell us a little about yourself!</h1>
+        <hr>       
+        <a href="/home"><button class="btn btn-sm btn-danger">Nevermind, go back</button></a>
+        <hr>
+        <form>
+      <h4>Name (Required)</h4>
+      <input type="text" id="friend-name" class="form-control" required="">
+  
+      <h4>Link to Photo Image (Required)</h4>
+      <input type="text" id="friend-pic" class="form-control" required="">
+  
+      <hr>
+      <h2 class="text-center">On a scale of 1-5, answer these prompts!</h2>
+
+      <h3><strong>Question 1</strong></h3>
+      <h4>Your mind is always buzzing with unexplored ideas and plans.</h4>
+      <div class="form-group">
+          <select class="form-control" id="q01">
+              <option value="1">1 (Strongly Disagree)</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5 (Strongly Agree)</option>
+          </select>
+        </div>
+
+
+      <h3><strong>Question 2</strong></h3>
+      <h4>Generally speaking, you rely more on your experience than your imagination.</h4>
+      <div class="form-group">
+          <select class="form-control" id="q02">
+              <option value="1">1 (Strongly Disagree)</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5 (Strongly Agree)</option>
+          </select>
+        </div>
+
+  
+      <h3><strong>Question 3</strong></h3>
+      <h4>You find it easy to stay relaxed and focused even when there is some pressure.</h4>
+      <div class="form-group">
+          <select class="form-control" id="q03">
+              <option value="1">1 (Strongly Disagree)</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5 (Strongly Agree)</option>
+          </select>
+        </div>
+ 
+  
+      <h3><strong>Question 4</strong></h3>
+      <h4>You rarely do something just out of sheer curiosity.</h4>
+      <div class="form-group">
+          <select class="form-control" id="q04">
+              <option value="1">1 (Strongly Disagree)</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5 (Strongly Agree)</option>
+          </select>
+        </div>
+ 
+  
+      <h3><strong>Question 5</strong></h3>
+      <h4>People can rarely upset you.</h4>
+      <div class="form-group">
+          <select class="form-control" id="q05">
+              <option value="1">1 (Strongly Disagree)</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5 (Strongly Agree)</option>
+          </select>
+        </div>
+
+  
+      <h3><strong>Question 6</strong></h3>
+      <h4>It is often difficult for you to relate to other people’s feelings.</h4>
+      <div class="form-group">
+          <select class="form-control" id="q06">
+              <option value="1">1 (Strongly Disagree)</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5 (Strongly Agree)</option>
+          </select>
+        </div>
+
+  
+      <h3><strong>Question 7</strong></h3>
+      <h4>In a discussion, truth should be more important than people’s sensitivities.</h4>
+      <div class="form-group">
+          <select class="form-control" id="q07">
+              <option value="1">1 (Strongly Disagree)</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5 (Strongly Agree)</option>
+          </select>
+        </div>
+
+
+        <h3><strong>Question 8</strong></h3>
+      <h4>You rarely get carried away by fantasies and ideas.</h4>
+      <div class="form-group">
+          <select class="form-control" id="q08">
+              <option value="1">1 (Strongly Disagree)</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5 (Strongly Agree)</option>
+          </select>
+        </div>
+
+
+      <h3><strong>Question 9</strong></h3>
+      <h4>You think that everyone’s views should be respected regardless of whether they are supported by facts or not.</h4>
+      <div class="form-group">
+          <select class="form-control" id="q09">
+              <option value="1">1 (Strongly Disagree)</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5 (Strongly Agree)</option>
+          </select>
+        </div>
+
+  
+      <h3><strong>Question 10</strong></h3>
+      <h4>You feel more energetic after spending time with a group of people.</h4>
+      <div class="form-group">
+          <select class="form-control" id="q10">
+              <option value="1">1 (Strongly Disagree)</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5 (Strongly Agree)</option>
+          </select>
+        </div>
+
+
+
+    <button type="submit" class="btn btn-primary btn-lg btn-block" data-toggle="modal" data-target="#exampleModalCenter" id="submit">Submit</button>
+
+
+    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLongTitle">Your recommended Friend is...</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body" id="suggestedFriend">
+            
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+
+    <footer class="footer">
+        <div class="container">
+          <p>
+            <a href="/api/friends">All Friends</a> |
+        </div>
+      </footer>
+  </body>
+
+</html>
+
+<script type="text/javascript">
+
+$("#submit").on("click", function(event) {
+    event.preventDefault();
+
+    let friends = $.get("http://localhost:1134/api/friends/");
+    //Does this work?!? I mean, it's an Ajax-type call-thingie, right?
+
+    let newFriend = {
+        friendName: $("#friend-name").val(),
+        friendPic: $("#friend-pic").val(),
+        scores: [
+            $("#q01").val(),
+            $("#q02").val(),
+            $("#q03").val(),
+            $("#q04").val(),
+            $("#q05").val(),
+            $("#q06").val(),
+            $("#q07").val(),
+            $("#q08").val(),
+            $("#q09").val(),
+            $("#q10").val()
+        ],
+    };
+
+    console.log(newFriend)
+    // Save responses to an object, with answers as an array with the object itself.
+
+    $.post("http://localhost:1134/api/friends", newFriend,
+    
+      $("#friend-name").val("Name"),
+      $("#friend-pic").val("URL"),
+      $("#q01").val("3"),
+      $("#q02").val("3"),
+      $("#q03").val("3"),
+      $("#q04").val("3"),
+      $("#q05").val("3"),
+      $("#q06").val("3"),
+      $("#q07").val("3"),
+      $("#q08").val("3"),
+      $("#q09").val("3"),
+      $("#q10").val("3")
+
+    );
+  let totalDifference = 0;
+
+  // const differences = friends.map((currentFriend, index) => {
+  //   return currentFriend - newFriend;
+  // });
+
+  // const totalDifferences = differences.reduce((accumilator, currentDiff) => {
+  //   return accumilator + currentDiff; //hey, take my running total, and add this iteration's total to it.
+  // });
+
+  //totalDifferences = the total of all of the differences. Sam's extra help code, I don't know how to interpret this.
+
+
+  for (i = 0; i < friends.length; i++) {
+    // So go through the friends so far, and:
+    for (j = 0; j < scores.length; j++) {
+      // compare the scores, really unsure about this part.
+      totalDifference += abs(parseInt(friends[i].scores[j].value) - parseInt(newFriend.scores[j].value));
+      // totalDifference = friends.difference.value;
+      // No clue. I am really lost now. What was the goal of all of this, was it the mastery of the javascript and modals or of the Express and the pathing? There is a logic to this that I do not know how to word.
+    };
+
+    // So at this point totalDiff is the total difference between newFriend and friends[i], so.. can I set that to a value?
+    // SEIRSOULY WHAT AM I DOING WITH THIS> LOOPS MAKE NO SENSE ANYMORE. 
+  }
+  $("#suggestedFriend").html(
+    "<div class='container'><div class='col-12'>" + newFriend.friendName + "</div><div class='col-12'><img src=" + newFriend.friendPic + "></div></div>");
+    // This is definitely working, I just need to have something other than the newFriend to cycle back in on itself.
+
+
+// Compare submitted user score (newFriend.scores) to existing friends scores
+// for loop - add abs() of diff into totalDifference, lowest total Difference gets put into a Modal (which I've never used before.)
+  // $("#suggestedFriend") is where the name and photo need to end up.
+})
+</script>
+
+<!-- Determine the user's most compatible friend using the following as a guide:
+
+Convert each user's results into a simple array of numbers (ex: [5, 1, 4, 4, 5, 1, 2, 5, 4, 1]).
+
+With that done, compare the difference between current user's scores against those from other users, question by question. Add up the differences to calculate the totalDifference.
+        
+Example:
+        
+User 1: [5, 1, 4, 4, 5, 1, 2, 5, 4, 1]
+User 2: [3, 2, 6, 4, 5, 1, 2, 5, 4, 1]
+Total Difference: [2, 1, 2, 0, 0, 0, 0, 0,] = 5
+        
+Remember to use the absolute value of the differences. Put another way: no negative solutions! Your app should calculate both 5-3 and 3-5 as 2, and so on.
+The closest match will be the user with the least amount of difference.
+        
+Once you've found the current user's most compatible friend, display the result as a modal pop-up.
+             
+The modal should display both the name and picture of the closest match. -->
