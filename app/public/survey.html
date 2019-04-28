@@ -22,10 +22,10 @@
         <hr>
         <form>
       <h4>Name (Required)</h4>
-      <input type="text" id="friend-name" class="form-control" required="">
+      <input type="text" id="friend-name" class="form-control" placeholder="Enter your name"required="">
   
       <h4>Link to Photo Image (Required)</h4>
-      <input type="text" id="friend-pic" class="form-control" required="">
+      <input type="text" id="friend-pic" class="form-control" placeholder="Enter the URL of a picture of you!"required="">
   
       <hr>
       <h2 class="text-center">On a scale of 1-5, answer these prompts!</h2>
@@ -195,18 +195,19 @@
 </html>
 
 <script type="text/javascript">
-
+  let totalDifference = 0;
+  let differencesArray = [];
+  let bestFriend;
+  let newFriend;
+    friends = $.get("/api/friends/");
 $("#submit").on("click", function(event) {
     event.preventDefault();
-
-    let friends = $.get("http://localhost:1134/api/friends/");
-    //Does this work?!? I mean, it's an Ajax-type call-thingie, right?
 
     let newFriend = {
         friendName: $("#friend-name").val(),
         friendPic: $("#friend-pic").val(),
         scores: [
-            $("#q01").val(),
+            parseInt($("#q01").val()),
             $("#q02").val(),
             $("#q03").val(),
             $("#q04").val(),
@@ -219,59 +220,57 @@ $("#submit").on("click", function(event) {
         ],
     };
 
-    console.log(newFriend)
-    // Save responses to an object, with answers as an array with the object itself.
-
-    $.post("http://localhost:1134/api/friends", newFriend,
-    
-      $("#friend-name").val("Name"),
-      $("#friend-pic").val("URL"),
-      $("#q01").val("3"),
-      $("#q02").val("3"),
-      $("#q03").val("3"),
-      $("#q04").val("3"),
-      $("#q05").val("3"),
-      $("#q06").val("3"),
-      $("#q07").val("3"),
-      $("#q08").val("3"),
-      $("#q09").val("3"),
-      $("#q10").val("3")
-
-    );
-  let totalDifference = 0;
-
-  // const differences = friends.map((currentFriend, index) => {
-  //   return currentFriend - newFriend;
-  // });
-
-  // const totalDifferences = differences.reduce((accumilator, currentDiff) => {
-  //   return accumilator + currentDiff; //hey, take my running total, and add this iteration's total to it.
-  // });
-
-  //totalDifferences = the total of all of the differences. Sam's extra help code, I don't know how to interpret this.
-
-
-  for (i = 0; i < friends.length; i++) {
+    console.log(friends.responseJSON);
+  for (i = 0; i < friends.responseJSON.length; i++) {
+    let totalDifference = 0;
     // So go through the friends so far, and:
-    for (j = 0; j < scores.length; j++) {
-      // compare the scores, really unsure about this part.
-      totalDifference += abs(parseInt(friends[i].scores[j].value) - parseInt(newFriend.scores[j].value));
-      // totalDifference = friends.difference.value;
-      // No clue. I am really lost now. What was the goal of all of this, was it the mastery of the javascript and modals or of the Express and the pathing? There is a logic to this that I do not know how to word.
+    for (j = 0; j < newFriend.scores.length; j++) {
+      // friendCheckVal = friends.responseJSON[i].scores[j];
+      // newFriendCheckVal = newFriend.scores[j];
+      totalDifference += Math.abs(parseInt(friends.responseJSON[i].scores[j]) - parseInt(newFriend.scores[j]));
     };
-
-    // So at this point totalDiff is the total difference between newFriend and friends[i], so.. can I set that to a value?
-    // SEIRSOULY WHAT AM I DOING WITH THIS> LOOPS MAKE NO SENSE ANYMORE. 
+    differencesArray.push(totalDifference);
   }
+  checkBest();
+});
+
+let checkBest = function() {
+    let bestScore = differencesArray[0];
+    console.log(differencesArray);
+
+    let best;
+  for (k = 0; k < differencesArray.length; k++) {
+      if (bestScore > differencesArray[k]) {
+        bestScore = differencesArray[k];
+        best = k;
+      };
+      console.log(bestScore);
+    bestFriend = friends.responseJSON[best];
+    console.log(bestFriend)
+  };
+  postNew();
+};
+let postNew = function() {
+  $.post("http://localhost:1134/api/friends", newFriend,
+    $("#friend-name").val("Name"),
+    $("#friend-pic").val("URL"),
+    $("#q01").val("3"),
+    $("#q02").val("3"),
+    $("#q03").val("3"),
+    $("#q04").val("3"),
+    $("#q05").val("3"),
+    $("#q06").val("3"),
+    $("#q07").val("3"),
+    $("#q08").val("3"),
+    $("#q09").val("3"),
+    $("#q10").val("3")
+  );
+
+  console.log(bestFriend);
+
   $("#suggestedFriend").html(
-    "<div class='container'><div class='col-12'>" + newFriend.friendName + "</div><div class='col-12'><img src=" + newFriend.friendPic + "></div></div>");
-    // This is definitely working, I just need to have something other than the newFriend to cycle back in on itself.
-
-
-// Compare submitted user score (newFriend.scores) to existing friends scores
-// for loop - add abs() of diff into totalDifference, lowest total Difference gets put into a Modal (which I've never used before.)
-  // $("#suggestedFriend") is where the name and photo need to end up.
-})
+    "<div class='container'><div class='col-12'>" + bestFriend.friendName + "</div><div class='col-12'><img src=" + bestFriend.friendPic + " + width=400px></div></div>");
+  };
 </script>
 
 <!-- Determine the user's most compatible friend using the following as a guide:
